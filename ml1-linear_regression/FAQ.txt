@@ -1,0 +1,167 @@
+FAQ for Week 2 and programming exercise 1
+MentorWeek 2 · 3 months ago · Edited
+
+LECTURE VIDEO FAQ
+
+Q1) Where can I find notes on the lecture videos?
+
+The Course Wiki contains notes about the lectures. The lecture slides themselves are no longer available.
+
+Lecture notes are available in the Resources menu.
+
+Q2) I found an error in one of the video lectures. Should I post about it on the Forum?
+
+No. There are lots and lots of errors in the video lectures. We keep a list of them in the Errata section of the Course Wiki. If you find a new error, please add it to the Wiki.
+
+Q3) In the "Features and Polynomial Regression" video, why does Prof Ng talk about one of the curves "going back down"?
+
+See the Course Wiki lecture notes for Week 2.
+
+Q4) Where can I get the data files used in the Octave/MATLAB video tutorial?
+
+See the lecture notes section of the Course Wiki.
+
+QUIZ FAQ
+
+Q1) I keep getting the quiz question on feature scaling incorrect. What should I do?
+
+Make sure you are using a dot '.' for decimal and not a comma ','. Round-off to the correct number of places after the decimal point. Finally, see <this tutorial>
+
+Q2) The quiz refers to a n-element vector. Is this a column vector or a row vector?
+
+All vectors in this course, unless otherwise stated, are column vectors.
+
+PROGRAMMING ASSIGNMENT FAQ
+
+Q1) How do I get started?
+
+    Be sure you've watched all of the Week 1 and Week 2 videos, including the Octave/MATLAB tutorial series.
+    Use the Tutorials (via the Resources menu) to learn about the vectorized methods.
+    Additional test cases are available in the Resources menu.
+    Download each programming assignment from the "Assignments" menu.
+    Follow the instructions in the ex1.pdf file.
+    Never use the addpath() command to fix a problem with your folder structures. See Q6 below.
+    Read the page "Programming tips from Mentors" in the Week 2 "Course Content" area.
+    Do not use Wordpad to edit your script files. Use the editor built into the Octave or MATLAB GUI, or use a text-editor such as Notepad++."
+    Don't use WINRAR to extract the contents of the programming exercise zip files. It does not extract the folder structure correctly.
+
+Q2) When I run the submit script, I do not see the option to submit individual parts as shown in the videos. Why?
+
+The submit process was changed after the videos were recorded. Now all parts of the exercise are evaluated each time you run the submit script.
+
+Q3) I am using Octave 4.0.0, and I get some errors when I run the submit script. What can I do?
+
+Do not use Octave 4.0.0 - it is broken in a way that makes the submit script fail. We strongly recommend you use Octave 3.8.x or 4.0.1 (or later), or (even better) MATLAB.
+
+If you must use Octave 4.0.0, then see the thread "SUBMISSION FAILED? CLICK HERE" in the All Threads view of the forum. You will have to scroll down a couple of pages to find it.
+
+Do not use the "Octave 4.0.0 patch" with Windows 10.
+
+Q4) When I run the submit script, I get an error about "urlread: peer certificate..." What can I do?
+
+You need to apply the "peer certificate" patch. See the thread "Here is the peer certificate patch" in the General Discussion forum area.
+
+Note: if you apply the peer certificate patch, and then get this error message:
+
+error: structure has no member 'partFeedbacks'
+
+...delete the line you added to submitWithConfiguration.m, and re-enter it by hand (do not use copy-and-paste).
+
+Q5) I get the correct answer "32.07" for the cost value, so why doesn't the grader give me any points?
+
+That test case is very simple, and uses all-zeros for the theta values. It is not a robust test of your code. And it is not the result that the submit grader cares about.
+
+The submit grader uses a different test case than the one in the exercise scripts. It has a different number of training examples and features. Your code must work with any data set.
+
+Test your code using the additional test cases from the Resources menu.
+
+Q6) When I run the submit script, I get an error like this, what can I do about it?Name is nonexistent or not a directory: .\lib > In path (line 109) In addpath (line 88) In submit (line 2) Undefined function or variable submitWithConfiguration'.
+
+Check if you extracted all of the contents of the exercise zip file correctly. You should have the following folders, each with some files:
+
+    /ex1 - use this folder to run the ex1 and submit scripts.
+    /ex1/lib
+    /ex1/lib/jsonlab
+
+Also make sure you are in the correct working directory. Use the 'pwd' command to check to see if you are using /ex1.
+
+Q7) The videos tell us to use θ′x but I get a dimensions mismatch error when I use it. Why?
+
+See the Programming tips from Mentors for an explanation of the difference between θ′x and Xθ
+
+Q8) In ex1_multi, why is my house price prediction not the same for both methods?
+
+To get the best solution using the gradient descent solution, you need to modify the learning rate and the number of iterations in ex1_multi.m. If you normalize the features of the house price prediction, then you can get the same price for both gradient descent and the Normal equation method.
+
+Q9) I am using a Mac with Octave and I see the 'unknown or ambiguous terminal type' error. What should I do?
+
+See the front page of the Course Wiki for the solution.
+
+Q10) I run my code and get the error "Not enough input arguments" or "x undefined near line <--->". How do I fix it?
+
+To test your code from the console, you must provide the data parameters it needs by putting some data between the parenthesis. If you just type in the function name with no parenthesis and no data variables, you will get a runtime error.
+
+Q11) Why does Octave hang or crash with a blank plot figure?
+
+Some Octave versions are is distributed without the required font files. So the first time you generate a figure plot, Octave takes a couple of minutes to generate the font files. During this time, Octave looks like it has crashed. But it has not. It is still generating the fonts in the background. Just wait a minute or two, and the fonts will be generated, execution will resume, and all plots in the future will be displayed promptly.
+
+Q12) How do I fix the error "!! Submission failed: unexpected error: Error using urlreadwrite (line 59) "?
+
+Your computer probably has a firewall, anti-virus software, or a proxy server, that is blocking the submit script from sending your results to Coursera for grading.
+
+Proxy server settings can be set in the GUI. Firewall and anti-virus issues are yours to fix.
+
+Q14) In ex1_multi.m, the theta values are different for gradient descent and the Normal equation. Is that OK?
+
+Yes. Theta is calculated from the values of the features. Since gradient descent uses normalized features, the theta values will be different than the Normal equation theta, which uses the raw features.
+
+You can make the same predictions with each theta, by applying the normalization values - the mu and sigma returned from featureNormalize() - to the features of the new prediction for the gradient descent solution.
+
+Q15) How do I know my results for the optional assignments?
+
+The submit grader's results table will say "0/0 Nice work!" if your results are correct, and will just say "0/0" if they are not.
+
+Q16) Can I use both Octave and MATLAB?
+
+Not easily. They store the "token.mat" file in different formats, so if you switch between Octave and MATLAB, you have to manually delete the "token.mat" file from your exercise folder every time.
+
+Q17) How do I fix these errors when I run the submit script?
+
+    "Submission failed: unexpected error: Error using loadjson (line 73) input file does not exist": Try the fix for Q6.
+    "urlread: Couldn't resolve host name": Try the fixes for Q6 and Q12.
+
+Q18) Can I change my email address during the course?
+
+No. This will confuse the exercise grader.
+
+Also, if your email address has a '+' character, replace it with "%2B".
+ ·  ·
+This thread is closed. You cannot add any more responses.
+
+    Earliest
+    Top
+    Most Recent
+
+Mentor · 4 days ago · Edited
+
+FAQ Continued: (the original FAQ post reached the maximum length)
+
+-------------------------
+
+Q19: How do I fix this error? "Unable to submit: You used an invalid email or your token may have expired "
+
+Check that you have not changed your email address.
+
+Check that your computer's time is set correctly. Some students report that having the time set incorrectly may cause this error.
+
+Q20) Submission Error: curl: (35) schannel: failed to retrieve ALPN result
+
+A1) In submitWithConfiguration, try changing this:
+
+[code, responseBody] = system(sprintf('echo jsonBody=%s | curl -k -X POST -d @- %s', body, submissionUrl));
+
+... to this
+
+[code, responseBody] = system(sprintf('echo jsonBody=%s | curl -k -X POST -d @- %s --no-alpn', body, submissionUrl));
+
+A2) If this fix does not work, try using the CLI instead of the GUI.	:

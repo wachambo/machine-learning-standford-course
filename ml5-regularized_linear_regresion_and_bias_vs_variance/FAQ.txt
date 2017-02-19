@@ -1,0 +1,77 @@
+FAQ for Week 6 and programming exercise 5
+MentorWeek 6 · 3 months ago · Edited
+
+VIDEO LECTURE FAQ
+
+(none so far)
+
+QUIZ FAQ
+
+Q1) In the quiz for "Machine Learning System Design", I can't get the right answer for the F1 score.
+
+Be sure you use the '.' character for the decimal point, not a comma ','.
+
+Round your answer to two digits of accuracy.
+
+Q2) I can't get the correct answers for "Machine Learning System Design" Question 4 or Question 5.
+
+Hint: consider the training and cross-validation sets as having identical performance. Most of the other true/false answers are taken directly from the video lectures.
+
+PROGRAMMING ASSIGNMENT FAQ
+
+See the Resources menu for tutorials and additional test cases.
+
+Q1) For learningCurve() and validationCurve(), why don't we include regularization when computing Jtrain, Jcv, and Jtest?
+
+Regularization is built-in to theta when you train the system. We do not need to include it twice.
+
+When we measure Jtrain, Jcv, and Jtest, we want to measure the true error, without any additional penalties.
+
+Tip: when computing Jtrain and Jcv, do not ever use the line of code "lambda = 0". Doing that will erase the value of lambda that the submit grader is using to check your code.
+
+Q2) My learning curve plot looks exactly like the one in ex5.pdf. Why doesn't the submit grader give me points?
+
+    Use the the additional test case (from the Resources menu) to see if your cost function gives the correct results when there is only one training example.
+    The ex5.m script uses lambda = 0. But the submit script uses non-zero values for lambda. Use the additional test cases to check whether your learningCurve() handles non-zero lambda values correctly. Read the tutorial for more tips.
+    Do not set "lambda = 0" inside any of your functions. You can pass a '0' as the value of the lambda parameter, but don't change the value of lambda itself.
+
+Q3) How do I compute Jtest for the optional Section 3.4?
+
+The ex5.m script creates the test set for you.
+
+    Train on X_poly and y using the best lambda found from Section 3.3.
+    Measure Jtest on X_poly_test and ytest, without regularization
+
+Q4) Why do we use all of the CV set in the learning curve and validation curve, but only a subset of the CV set for the optional Section 3.5?
+
+In section 3.2 and 3.3, we use the whole CV set because we are only making one measurement. Using the entire CV set gives us the most general Jcv estimate.
+
+In section 3.5, we are going to average Jcv over multiple random selections, so the generalization comes through averaging. There is little added benefit from using the entire CV set.
+
+Q5) What does Prof Ng mean when he says we're "fitting another parameter 'd' to the CV set"?
+
+That's not actually what we're doing. He suggests adjusting the model based on the Jcv value. But there is a problem.
+
+Each set of data can only be used for one purpose. If you use the CV set to adjust the regularization (the validation curve process), then you cannot also use the CV set to select the best polynomial degree.
+
+You could use the test set to select the best polynomial degree. Then you will need another test set to verify the total system performance. The exercise does not require you to do this.
+
+Q6) Why does my code for learningCurve() generate "divide by zero" warnings?
+
+This is normal behavior from fmincg() when there are only one or two examples in the training set. It is not a problem - the language handles these sorts of math issues gracefully, it is only a warning, not an error, and you do not need to fix it.
+
+Q7) My "Fig. 4" doesn't look like the one in ex5pdf. Is that a problem?
+
+Your Fig. 4 may look like this:
+
+If so, that's OK. The exact values in the tails of the curve (outside of the training range) depend on the details of your implementation, whether you're using MATLAB or Octave, and what math library it includes.
+
+Q8) How do I fix this error message?
+
+"Operands to the || and && operators must be convertible to logical scalar values.
+
+Error in fmincg (line 95)
+
+while ((f2 > f1+z1*RHO*d1) || (d2 > -SIG*d1)) && (M > 0)"
+
+Answer: Your cost function must return J as a scalar, and grad as a column vector.

@@ -1,0 +1,4 @@
+modificar ml1 y ml2 para que usen bucles en lugar de vectorizacion.
+
+me parece que en ml2 hay que utilizar vectorizacion para hayar costes....mirar
+en ml3 que lo tengo implementado mejor.

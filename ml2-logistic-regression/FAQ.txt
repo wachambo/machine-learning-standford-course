@@ -1,0 +1,74 @@
+FAQ for Week 3 and programming exercise 2
+MentorWeek 3 · 3 months ago · Edited
+
+LECTURE VIDEO FAQ
+
+Q1) Where can I find notes on the lecture videos?
+
+The Course Wiki contains notes on the lectures.
+
+The lecture slides themselves are no longer available.
+
+Lecture notes are available in the Resources menu.
+
+QUIZ FAQ
+
+PROGRAMMING ASSIGNMENT FAQ
+
+See the Resources menu for Tutorials and additional test cases.
+
+Q1) My cost function returns the value 0.693. Why doesn't the submit grader give me any points?
+
+The value 0.693 is for a very simple test, where all of the theta values are zero. It is not a robust test of your code. Also, that is not the result the submit grader is looking for. The submit grader uses a different test case entirely. Your code must work on any set of data - of any size. Test your code using the additional test cases via the Resources menu.
+
+Q2) Why do I get an error message about the plot "legend", or other syntax errors in plotData.m?
+
+Be sure you added the code to plotData.m in the big blank area between lines 14 and line 22. Your added code should be after "figure; hold on;" and before "hold off';".
+
+Using copy-and-paste from a PDF file can sometimes cause problems with unprintable formatting characters, so try typing-in the code by hand.
+
+Also, try removing the "..." line continuation characters, and put all of each plot() statement on one line of code.
+
+Q3) I get the correct results for predict(), but the grader gives me no points.
+
+Be sure that your predict function includes use of sigmoid().
+
+Q4) Why do I get this error message when I run ex2.m or submit.m?
+
+error: __doglegm__: operator \: nonconformant arguments ...
+
+The error is due to your cost function returning the gradient as a matrix (or maybe as a row vector - both are bad). Cost J must be a scalar, and grad must be a column vector.
+
+The submit grader does not check the orientation of your gradient. The line of code at the end of the cost function "grad = grad(:)" is there to force the gradient to be returned as a column vector. Do not delete it.
+
+Q5) How does the code in plotDecisionBoundary.m work?
+
+See the Tutorial for ex2, it has a link to an explanation.
+
+Q6) My plot for lambda = 0 doesn't look like Fig. 5 in ex2.pdf. It looks like the one shown below. Why?
+
+A recent change in the MATLAB fminunc() function causes it to give a different decision boundary for the lambda = 0 condition. It gives this figure, which is expected. This is perfectly fine.
+
+If you set lambda to a very small value, you will get Fig. 5 from ex2.pdf.
+
+Q7) When I run the submit script, I get this error. How do I fix it?
+
+"unexpected error: operator /: nonconformant arguments (op1 is 1x1, op2 is 20x3)"
+
+This error is almost always caused by your sigmoid.m function, because you are using the vector division operator '/', instead of the element-wise division operator './'.
+
+Q8) Other sorts of errors from fminunc() giving strange errors about the argument sizes:
+
+Your cost function must return the gradient as a column vector. The submit grader does not check for this. So if your cost function works but fminunc() crashes, check if your cost function returns the correct shape of gradient.
+
+Q9) 0.774 instead of 0.776?
+
+Either answer is acceptable, different versions of Octave and MATLAB give slightly different results.
+
+Q10) Why does my plot of Figure 1 from ex2.pdf look like two separate plots?
+
+You have probably not modified the plotData.m function correctly. The code you add should be below the line "figure; hold on" and above the line "hold off".
+
+Q11) Does logistic regression use the natural log, or the base-10 log?
+
+We use the natural log, which is the function log() in MATLAB/Octave. The base-10 log is "log10()" - do not use it.

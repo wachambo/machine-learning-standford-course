@@ -1,0 +1,33 @@
+Q1) When I run the image compression step in ex7.m, the image comes out as a uniform grey or brown color.
+
+This means that you neglected to fill in the random centroid initialization code in kMeansInitCentroids. The ex7.pdf file actually gives you the code to use, but the grader does not grade this routine which makes it easy to miss.
+
+Video Lectures FAQ
+
+Q1) How do we know which are the most significant features to retain? Why can we choose just the first K of them? They aren't naturally ordered by significance are they? Wouldn't it make more sense to select the K most influential dimensions?
+
+Prof Ng doesn't get into the details of how Singular Value Decomposition (SVD) works, but it turns out that the output of SVD is exactly what we need for the purposes of PCA. It does "spectral decomposition" of the input matrix and gives it back expressed in a form in which it is obvious which are the important dimensions. The output of SVD is:
+
+[U,S,V] = svd(Sigma);
+
+Where Sigma is the covariance matrix. The output values U and V are unitary matrices and the columns of U are the eigenvectors of the transformation. S is a diagonal matrix, containing the corresponding eigenvalues in decreasing order. In order words, the SVD has done the work to figure out which dimensions are the most significant and gives us the results in that order. Prof Ng does discuss this in the video entitled "Choosing the Number or Principal Components" around the 7:00 mark. There are a number of good articles on the web that give more information about SVD:
+
+http://mathworld.wolfram.com/SingularValueDecomposition.html
+
+https://en.wikipedia.org/wiki/Singular_value_decomposition
+
+Here's the MATLAB doc for SVD:
+
+http://www.mathworks.com/help/matlab/ref/svd.html
+
+Q2) Why don't we need to compute the matrix inverse of U in order to recover the data in the original dimensions?
+
+Please have a look at the references about Singular Value Decomposition above. It turns out that the U matrix that is returned has the special property that it is a Unitary Matrix. One of the special properties of a Unitary Matrix is:
+
+U−1=U∗ where the "*" means "conjugate transpose".
+
+Since we are dealing with real numbers here, this is equivalent to:
+
+U−1=UT
+
+So we could compute the inverse and use that, but it would be a waste of energy and compute cycles.

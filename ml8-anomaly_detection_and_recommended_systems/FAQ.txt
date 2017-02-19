@@ -1,0 +1,7 @@
+Q1) I get the correct results for the collaborative filtering exercise, but I don't get any points from the submit grader. Why?
+
+The tutorial for this exercise (via the Resources menu) tells about a characteristic of the submit grader's test case which your cofiCostFunc() code must cope with.
+
+Q2) Why are some of the movie recommendations greater than 5?
+
+There is an error in ex8_cofi.m. See the tutorial for this exercise (from the Resources menu) to learn how to fix it.
